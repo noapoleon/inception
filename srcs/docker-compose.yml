@@ -7,7 +7,7 @@ services:
     networks:
       - docker-network
     volumes:
-      - voltest:/testdir
+      - voltest:/var/www/html
       #  mariadb:
       #    build: srcs/requirements/mariadb
       #    networks:
