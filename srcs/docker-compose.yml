@@ -1,0 +1,31 @@
+services:
+  nginx:
+    container_name: nginx
+    build: requirements/nginx
+    ports:
+      - "443:443"
+    networks:
+      - docker-network
+    volumes:
+      - voltest:/testdir
+      #  mariadb:
+      #    build: srcs/requirements/mariadb
+      #    networks:
+      #      - docker-network
+
+
+      #volumes:
+
+
+networks:
+  docker-network:
+volumes:
+  voltest:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./voltest
+      o: bind
+
+# not sure that's how it works
+# ensures projet will not attempt to build without a .env file (i think)
