@@ -1,7 +1,6 @@
 FROM debian:bullseye
 
 RUN apt-get update -y && apt-get upgrade -y
-# ca-certificates
 RUN apt-get install -y nginx openssl ca-certificates
 RUN mkdir -p /etc/nginx/ssl \
 	&& openssl req -x509 -nodes -days 365 \

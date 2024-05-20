@@ -4,7 +4,7 @@
 service mariadb start
 
 # Create db
-mysql -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
+mariadb -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
 
 # Create db user
 mariadb -e "CREATE USER IF NOT EXISTS \`${MYSQL_USER}\`@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}';"
@@ -19,5 +19,7 @@ mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'
 mariadb -e "FLUSH PRIVILEGES;"
 
 # restart mysql
-mysqladmin -u root -p${MYSQL_ROOT_PASSWORD} shutdown
+mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
+
+# Replace PID 1
 exec mysqld_safe
