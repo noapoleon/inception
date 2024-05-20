@@ -3,11 +3,13 @@ services:
     container_name: nginx
     build: requirements/nginx
     ports:
-      - "443:443"
+      - "8080:443"
     networks:
       - docker-network
     volumes:
       - voltest:/var/www/html
+    env_file:
+      - .env
       #  mariadb:
       #    build: srcs/requirements/mariadb
       #    networks:
@@ -24,7 +26,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ./voltest
+      device: ${VOL_NGINX}
       o: bind
 
 # not sure that's how it works
