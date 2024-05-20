@@ -1,0 +1,9 @@
+FROM debian:bullseye
+
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y mariadb-server
+
+COPY conf/50-server.cnf /etc/mysql/maria.conf.d/50-server.cnf
+COPY tools/setup.sh /setup.sh
+
+ENTRYPOINT ["bash", "setup.sh"]

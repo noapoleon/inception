@@ -3,31 +3,27 @@ services:
     container_name: nginx
     build: requirements/nginx
     ports:
-      - "8080:443"
+      - "${ENTRYPORT}:443"
+    networks:
+      - docker-network
+    env_file:
+      - .env
+  mariadb:
+    container_name: mariadb 
+    build: requirements/mariadb
     networks:
       - docker-network
     volumes:
-      - voltest:/var/www/html
+      - db:/var/lib/mysql
     env_file:
       - .env
-      #  mariadb:
-      #    build: srcs/requirements/mariadb
-      #    networks:
-      #      - docker-network
-
-
-      #volumes:
-
 
 networks:
   docker-network:
 volumes:
-  voltest:
+  db:
     driver: local
     driver_opts:
       type: none
-      device: ${VOL_NGINX}
+      device: ${VOL_MARIADB}
       o: bind
-
-# not sure that's how it works
-# ensures projet will not attempt to build without a .env file (i think)
