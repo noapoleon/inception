@@ -11,4 +11,4 @@ COPY tools/setup.sh /setup.sh
 
 # still waits 10 seconds at the end even though PID is 1
 # there is however a mysqld process aside from the PID 1 so check that tomorrow
-ENTRYPOINT ["/setup.sh"]
+ENTRYPOINT ["bash", "/setup.sh"]

@@ -10,5 +10,7 @@ RUN mkdir -p /etc/nginx/ssl \
 		-out /etc/nginx/ssl/selfsigned.crt
 
 COPY conf/default.conf /etc/nginx/sites-available/default
+ARG DOMAIN_NAME
+RUN sed -i "s/\${DOMAIN_NAME}/${DOMAIN_NAME}/g" /etc/nginx/sites-available/default
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

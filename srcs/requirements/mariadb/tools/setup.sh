@@ -22,4 +22,6 @@ mariadb -e "FLUSH PRIVILEGES;"
 mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
 
 # Replace PID 1
-exec mysqld_safe
+exec mysqld
+#exec mysqld_safe
+#exec mysqld_safe --pid-file=/run/mysqld/mysqld.pid --socket=/run/mysqld/mysqld.socket

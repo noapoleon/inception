@@ -1,7 +1,10 @@
 services:
   nginx:
     container_name: nginx
-    build: requirements/nginx
+    build:
+      context: requirements/nginx
+      args:
+        DOMAIN_NAME: ${DOMAIN_NAME}
     ports:
       - "${ENTRYPORT}:443"
     networks:
@@ -15,6 +18,20 @@ services:
       - docker-network
     volumes:
       - db:/var/lib/mysql
+    env_file:
+      - .env
+  wordpress:
+    container_name: wordpress
+      #build: requirements/wordpress
+    build: 
+      context: requirements/wordpress
+      args:
+        PHP_VER: ${PHP_VER}
+        WP_VER: ${WP_VER}
+    networks:
+      - docker-network
+        #volumes:
+        #  - i dont know
     env_file:
       - .env
 
