@@ -16,8 +16,8 @@ RUN wget https://wordpress.org/wordpress-${WP_VER}.tar.gz -P /var/www
 RUN cd /var/www && tar -xzf wordpress-${WP_VER}.tar.gz && rm wordpress-${WP_VER}.tar.gz
 RUN chown -R root:root /var/www/wordpress
 # Install wp-cli (command line config tool for wordpress)
-RUN wget https://github.com/wp-cli/wp-cli/releases/download/v2.10.0/wp-cli-2.10.0.phar
-RUN chmod +x wp-cli-2.10.0.phar && mv wp-cli-2.10.0.phar /usr/local/bin/wp-cli.phar
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/
 
 # Copy configs
 COPY conf/www.conf /etc/php/${PHP_VER}/fpm/pool.d/www.conf
