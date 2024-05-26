@@ -30,8 +30,8 @@ services:
         WP_VER: ${WP_VER}
     networks:
       - docker-network
-        #volumes:
-        #  - i dont know
+          #volumes:
+          #  - i dont know
     env_file:
       - .env
 
