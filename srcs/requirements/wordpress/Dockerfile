@@ -20,7 +20,7 @@ RUN wget https://github.com/wp-cli/wp-cli/releases/download/v2.10.0/wp-cli-2.10.
 RUN chmod +x wp-cli-2.10.0.phar && mv wp-cli-2.10.0.phar /usr/local/bin/wp-cli.phar
 
 # Copy configs
-COPY conf/www.conf /etc/php/${PHP_VER}/pool.d/www.conf
+COPY conf/www.conf /etc/php/${PHP_VER}/fpm/pool.d/www.conf
 COPY tools/setup.sh /setup.sh
 
 EXPOSE 9000

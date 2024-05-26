@@ -12,11 +12,11 @@ down:
 	docker compose -p $(NAME) down
 
 datadir:
-	@if [ ! -d ${VOL_MARIADB} ]; then \
-		mkdir -p ${VOL_MARIADB}; \
+	@if [ ! -d ${VOL_DB} ]; then \
+		mkdir -p ${VOL_DB}; \
 	fi
-	@if [ ! -d ${VOL_WORDPRESS} ]; then \
-		mkdir -p ${VOL_WORDPRESS}; \
+	@if [ ! -d ${VOL_WP} ]; then \
+		mkdir -p ${VOL_WP}; \
 	fi
 
 .PHONY: all up down re datadir
