@@ -3,6 +3,7 @@ Configure 3 docker containers in a network and make them communicate:
 - [x] Nginx
 - [x] Wordpress + php-fpm
 - [x] MariaDB
+
 Bonuses:
 - [ ] Redis
 - [ ] FTP Server
