@@ -12,11 +12,6 @@ down:
 	docker compose -p $(NAME) down
 
 datadir:
-	@if [ ! -d ${VOL_DB} ]; then \
-		mkdir -p ${VOL_DB}; \
-	fi
-	@if [ ! -d ${VOL_WP} ]; then \
-		mkdir -p ${VOL_WP}; \
-	fi
+		mkdir -p ${VOL_DB} ${VOL_WP} ${VOL_ADMINER}
 
 .PHONY: all up down re datadir

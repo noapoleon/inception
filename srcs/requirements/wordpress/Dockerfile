@@ -1,16 +1,15 @@
 FROM debian:bullseye
 
-# Version args from docker compose
-ARG PHP_VER WP_VER WPCLI_VER
-
 # Install dependencies
 RUN apt-get update -y && apt-get upgrade -y
+ARG PHP_VER WP_VER WPCLI_VER
 RUN apt-get install -y	wget \
 						php${PHP_VER} \
 						php${PHP_VER}-fpm \
 						php${PHP_VER}-mysql \
 						mariadb-client
 
+# WAIT we are reinstalling wordpress everytime... maybe put this in install script?
 # Manually install wordpress
 RUN wget https://wordpress.org/wordpress-${WP_VER}.tar.gz -P /var/www
 RUN cd /var/www && tar -xzf wordpress-${WP_VER}.tar.gz && rm wordpress-${WP_VER}.tar.gz

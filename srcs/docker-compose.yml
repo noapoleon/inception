@@ -1,5 +1,6 @@
 services:
 
+  # Requirements
   nginx:
     container_name: nginx
     build:
@@ -7,15 +8,17 @@ services:
       args:
         DOMAIN_NAME: ${DOMAIN_NAME}
     ports:
-      - "${ENTRYPORT}:443"
+      - "443:443"
     networks:
       - docker-network
     volumes:
       - wp:/var/www/wordpress
+      - adminer:/var/www/adminer
     env_file:
       - .env
     depends_on:
       - wordpress
+      - adminer
 
   mariadb:
     container_name: mariadb 
@@ -50,6 +53,38 @@ services:
       mariadb:
         condition: service_healthy
 
+  # Bonuses
+  adminer:
+    container_name: adminer
+    build:
+      context: requirements/bonus/adminer
+      args:
+        PHP_VER: ${PHP_VER}
+    networks:
+      - docker-network
+    volumes:
+      - adminer:/var/www/adminer
+    env_file:
+      - .env
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
+        #  ftp:
+        #    container_name: ftp
+        #    build:
+        #      context: requirements/bonus/ftp
+        #    ports:
+        #      - "21100-21110:21100-21110"
+        #      #- "20:20" #configure ports better later
+        #      - "21:21" #configure ports better later
+        #    networks:
+        #      - docker-network
+        #    volumes:
+        #      - wp:/var/www/wordpress
+        #    env_file:
+        #      - .env
+
 networks:
   docker-network:
 volumes:
@@ -64,4 +99,10 @@ volumes:
     driver_opts:
       type: none
       device: ${VOL_WP}
+      o: bind
+  adminer:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${VOL_ADMINER}
       o: bind
