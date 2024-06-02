@@ -12,6 +12,9 @@ down:
 	docker compose -p $(NAME) down
 
 datadir:
-		mkdir -p ${VOL_DB} ${VOL_WP} ${VOL_ADMINER}
+		mkdir -p	${VOL_DB} \
+					${VOL_WP} \
+					${VOL_ADMINER} \
+					${VOL_RESUME}
 
 .PHONY: all up down re datadir
