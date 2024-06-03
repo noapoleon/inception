@@ -15,6 +15,7 @@ datadir:
 		mkdir -p	${VOL_DB} \
 					${VOL_WP} \
 					${VOL_ADMINER} \
-					${VOL_RESUME}
+					${VOL_RESUME} \
+					${VOL_REDIS}
 
 .PHONY: all up down re datadir
