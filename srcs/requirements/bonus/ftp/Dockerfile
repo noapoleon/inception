@@ -14,4 +14,3 @@ EXPOSE 20/tcp
 EXPOSE 21100-21110
 
 ENTRYPOINT ["bash", "/setup.sh"]
-#ENTRYPOINT ["sleep", "infinity"]

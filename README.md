@@ -11,5 +11,8 @@ Bonuses:
 - [x] Adminer
 - [ ] Custom Service (Don't know yet)
 
+Issues:
+- [ ] 10 seconds close time for ftp
+
 > [!CAUTION]
 > Remove dummy resume and put good one instead before submitting

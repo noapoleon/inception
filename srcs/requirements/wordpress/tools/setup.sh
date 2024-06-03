@@ -30,7 +30,7 @@ if ! wp-cli.phar --allow-root --path=/var/www/wordpress core is-installed; then
 	wp-cli.phar --allow-root --path=/var/www/wordpress plugin update all
 	wp-cli.phar --allow-root --path=/var/www/wordpress config set WP_REDIS_HOST redis
 	wp-cli.phar --allow-root --path=/var/www/wordpress config set WP_REDIS_PORT 6379
-	wp-cli.phar --allow-root --path=/var/www/wordpress config set WP_REDIS_PASSWORD ${WP_REDIS_PASS}
+	wp-cli.phar --allow-root --path=/var/www/wordpress config set WP_REDIS_PASSWORD ${WP_REDIS_PASS} &> /dev/null
 	wp-cli.phar --allow-root --path=/var/www/wordpress redis enable
 fi
 

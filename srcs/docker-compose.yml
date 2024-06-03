@@ -52,7 +52,9 @@ services:
       - .env
     depends_on:
       mariadb:
-        condition: service_healthy
+          condition: service_healthy
+      redis:
+          condition: service_healthy
 
   # Bonuses
   adminer:
@@ -84,6 +86,12 @@ services:
     container_name: redis
     build:
       context: requirements/bonus/redis
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 1s
+      retries: 10
+      start_period: 3s
     networks:
       - docker-network
     volumes:

@@ -13,11 +13,10 @@ RUN mkdir -p /etc/nginx/ssl \
 		-out /etc/nginx/ssl/selfsigned.crt
 
 # Install config and replace domain name
-ARG DOMAIN_NAME
 COPY conf/default.conf /etc/nginx/sites-available/default
-RUN sed -i "s/\${DOMAIN_NAME}/${DOMAIN_NAME}/g" /etc/nginx/sites-available/default && \
-	sed -i '/\s*types\s*{/a\    font/ttf ttf\;' /etc/nginx/mime.types
+COPY tools/setup.sh /setup.sh
 
+# Port documentation
 EXPOSE 443
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["bash", "/setup.sh"]
