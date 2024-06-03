@@ -91,20 +91,19 @@ services:
     env_file:
       - .env
 
-        #  ftp:
-        #    container_name: ftp
-        #    build:
-        #      context: requirements/bonus/ftp
-        #    ports:
-        #      - "21100-21110:21100-21110"
-        #      #- "20:20" #configure ports better later
-        #      - "21:21" #configure ports better later
-        #    networks:
-        #      - docker-network
-        #    volumes:
-        #      - wp:/var/www/wordpress
-        #    env_file:
-        #      - .env
+  ftp:
+    container_name: ftp
+    build:
+      context: requirements/bonus/ftp
+    ports:
+      - "21100-21110:21100-21110"
+      - "21:21"
+    networks:
+      - docker-network
+    volumes:
+      - wp:/var/www/wordpress
+    env_file:
+      - .env
 
 networks:
   docker-network:

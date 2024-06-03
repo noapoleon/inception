@@ -11,7 +11,7 @@ COPY conf/vsftpd.conf /etc/vsftpd.conf
 COPY tools/setup.sh /setup.sh
 
 EXPOSE 20/tcp
-EXPOSE 21/tcp
+EXPOSE 21100-21110
 
 ENTRYPOINT ["bash", "/setup.sh"]
 #ENTRYPOINT ["sleep", "infinity"]

@@ -18,4 +18,6 @@ datadir:
 					${VOL_RESUME} \
 					${VOL_REDIS}
 
+re: down all
+
 .PHONY: all up down re datadir

@@ -23,5 +23,3 @@ mysqladmin -u root -p$DB_ROOT_PASS shutdown
 
 # Replace PID 1
 exec mysqld
-#exec mysqld_safe
-#exec mysqld_safe --pid-file=/run/mysqld/mysqld.pid --socket=/run/mysqld/mysqld.socket

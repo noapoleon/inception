@@ -15,7 +15,8 @@ RUN mkdir -p /etc/nginx/ssl \
 # Install config and replace domain name
 ARG DOMAIN_NAME
 COPY conf/default.conf /etc/nginx/sites-available/default
-RUN sed -i "s/\${DOMAIN_NAME}/${DOMAIN_NAME}/g" /etc/nginx/sites-available/default
+RUN sed -i "s/\${DOMAIN_NAME}/${DOMAIN_NAME}/g" /etc/nginx/sites-available/default && \
+	sed -i '/\s*types\s*{/a\    font/ttf ttf\;' /etc/nginx/mime.types
 
 EXPOSE 443
 

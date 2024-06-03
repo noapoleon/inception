@@ -1,10 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-	<meta charset="UTF-8">
-	<title>Resume - Inception</title>
+	<head>
+		<meta charset="UTF-8">
+		<title>Resume - Inception</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
 	<body>
-		<h1>Noa Legrand</h1>
-		<p>Hi.</p>
-		<p>I'm a 42 student, this is my resume. :D</p>
+		<div class="wrapper">
+			<div class="intro">
+				<div class="profile">
+					<div class="photo">
+						<img src="assets/nlegrand.jpg">
+					</div>
+					<div class="bio">
+						<h1 class="name">Noa Legrand</h1>
+						<p class="profession">Student Developer</p>
+					</div>
+				</div>
+				<div class="intro-section about">
+					<h1 class="title">about me</h1>
+					<p class="paragraph">
+					Computer Science student developer at 42 Paris.
+					Interested in shader graphics and sysadmin.
+					</p>
+				</div>
+				<div class="intro-section contact">
+					<h1 class="title">Contact</h1>
+					<div class="info-section">
+						<i class="nf nf-fa-phone"></i>
+						<span>(+33)1 23 45 67 89</span>
+					</div>
+					<div class="info-section">
+						<i class="nf nf-md-map_marker"></i>
+						<span>Paris, France</span>
+					</div>
+					<div class="info-section">
+						<i class="nf nf-fa-paper_plane"></i>
+						<span>nlegrand@student.42.fr</span>
+					</div>
+				</div>
+				<div class="intro-section follow">
+					<h1 class="title">Follow</h1>
+					<div class="info-section link">
+						<i class="nf nf-fa-github"></i>
+						<a target="_blank" rel="author" href="https://github.com/noapoleon">
+							<span>GitHub/Noapoleon</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="detail">
+				<div class="detail-section edu">
+					<div class="detail-title">
+						<div class="title-icon">
+							<i class="nf nf-fa-graduation_cap"></i>
+						</div>
+						<span>Education</span>
+					</div>
+					<div class="detail-content">
+						<div class="timeline-block">
+							<h1>Lycee de la Plaine de l'Ain</h1>
+							<p>Specialized in Math, Computer Science and Physics/Chemistry</p>
+							<time>2019 - 2022</time>
+						</div>
+						<div class="timeline-block">
+							<h1>42 Paris</h1>
+							<p>Still doing the main curriculum :[</p>
+							<time>2022 - Present</time>
+						</div>
+					</div>
+				</div>
+				<div class="detail-section pg-skill">
+					<div class="detail-title">
+						<div class="title-icon">
+							<i class="nf nf-fa-code"></i>
+						</div>
+						<span>Programming skills</span>
+					</div>
+					<div class="detail-content">
+						<ul class="pg-list">
+							<li>
+								<span>C++</span>
+								<div class="sb-skeleton">
+									<div class="skillbar" style="--pgbar-length: 90%"></div>
+								</div>
+							</li>
+							<li>
+								<span>C</span>
+								<div class="sb-skeleton">
+									<div class="skillbar" style="--pgbar-length: 80%"></div>
+								</div>
+							</li>
+							<li>
+								<span>Makefile</span>
+								<div class="sb-skeleton">
+									<div class="skillbar" style="--pgbar-length: 75%"></div>
+								</div>
+							</li>
+							<li>
+								<span>Shell</span>
+								<div class="sb-skeleton">
+									<div class="skillbar" style="--pgbar-length: 40%"></div>
+								</div>
+							</li>
+							<li>
+								<span>Docker</span>
+								<div class="sb-skeleton">
+									<div class="skillbar" style="--pgbar-length: 50%"></div>
+								</div>
+							</li>
+							<li>
+								<span>HTML/CSS</span>
+								<div class="sb-skeleton">
+									<div class="skillbar" style="--pgbar-length: 20%"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="detail-section tool-skill">
+					<div class="detail-title">
+						<div class="title-icon">
+							<i class="nf nf-md-tools"></i>
+						</div>
+						<span>Developement Tools</span>
+					</div>
+					<div class="detail-content">
+						<ul class="tool-list">
+							<li>
+								<svg viewbox="0 0 100 100">
+									<circle cx="50" cy="50" r="45"></circle>
+									<circle class="cbar" cx="50" cy="50" r="45" style="--percent: 0.8"></circle>
+								</svg>
+								<span class="tl-name">Neovim</span>
+								<span class="tl-exp">80%</span>
+							</li>
+							<li>
+								<svg viewbox="0 0 100 100">
+									<circle cx="50" cy="50" r="45"></circle>
+									<circle class="cbar" cx="50" cy="50" r="45" style="--percent: 0.6"></circle>
+								</svg>
+								<span class="tl-name">Git</span>
+								<span class="tl-exp">60%</span>
+							</li>
+							<li>
+								<svg viewbox="0 0 100 100">
+									<circle cx="50" cy="50" r="45"></circle>
+									<circle class="cbar" cx="50" cy="50" r="45" style="--percent: 0.4"></circle>
+								</svg>
+								<span class="tl-name">Tmux</span>
+								<span class="tl-exp">40%</span>
+							</li>
+							<li>
+								<svg viewbox="0 0 100 100">
+									<circle cx="50" cy="50" r="45"></circle>
+									<circle class="cbar" cx="50" cy="50" r="45" style="--percent: 0.44"></circle>
+								</svg>
+								<span class="tl-name">SSH</span>
+								<span class="tl-exp">40%</span>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="detail-section interests">
+					<div class="detail-title">
+						<div class="title-icon">
+							<i class="nf nf-fa-heart"></i>
+						</div>
+						<span>Interests</span>
+					</div>
+					<div class="detail-content">
+						<div class="outer-frame">
+							<ul class="favor-list">
+								<li>
+									<i class="nf nf-fa-gamepad"></i>
+									<span>Games</span>
+								</li>
+								<li>
+									<i class="nf nf-md-code_braces"></i>
+									<span>Programming</span>
+								</li>
+								<li>
+									<i class="nf nf-fa-book"></i>
+									<span>Self-learning</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
-</html> 
+</html>

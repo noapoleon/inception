@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-# Only copy resume files if non existant in volume
-if [ ! -e /var/www/resume/index.html ]; then
-	cp /tmp/resume/index.html /var/www/resume/
+# copy resume files only if not configured
+if [ ! -e /var/www/resume/configured ]; then
+	cp -r /tmp/resume /var/www/
+	touch /var/www/resume/configured
+	printf "Copied resume files\n"
+else
+	printf "Did not copy resume files, already present\n"
 fi
-#if [ ! -e /var/www/resume/style.css ]; then
-#	cp /tmp/resume/style.css /var/www/resume/
-#fi
 
 exit 0

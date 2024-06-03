@@ -5,8 +5,8 @@ Configure 3 docker containers in a network and make them communicate:
 - [x] MariaDB
 
 Bonuses:
-- [ ] Redis
-- [ ] FTP Server
+- [x] Redis
+- [x] FTP Server
 - [x] Static Website (Resume)
 - [x] Adminer
 - [ ] Custom Service (Don't know yet)
