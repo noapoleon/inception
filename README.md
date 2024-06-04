@@ -13,6 +13,7 @@ Bonuses:
 
 Issues:
 - [ ] 10 seconds close time for ftp
+- [ ] check if uptime-kuma monitor works when nginx killed
 
 > [!CAUTION]
 > Remove dummy resume and put good one instead before submitting

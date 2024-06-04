@@ -16,7 +16,8 @@ datadir:
 					${VOL_WP} \
 					${VOL_ADMINER} \
 					${VOL_RESUME} \
-					${VOL_REDIS}
+					${VOL_REDIS} \
+					${VOL_KUMA}
 
 re: down all
 

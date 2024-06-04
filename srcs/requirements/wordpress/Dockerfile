@@ -1,8 +1,11 @@
 FROM debian:bullseye
 
+# Port documentation
+EXPOSE 9000
+
 # Install dependencies
 RUN apt-get update -y && apt-get upgrade -y
-ARG PHP_VER WP_VER WPCLI_VER
+ARG PHP_VER
 RUN apt-get install -y	wget \
 						php${PHP_VER} \
 						php${PHP_VER}-fpm \
@@ -17,8 +20,6 @@ RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/
 # Copy configs
 COPY conf/www.conf /etc/php/${PHP_VER}/fpm/pool.d/www.conf
 COPY tools/setup.sh /setup.sh
-
-EXPOSE 9000
 
 ENTRYPOINT ["bash", "/setup.sh"]
 

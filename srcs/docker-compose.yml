@@ -1,5 +1,6 @@
-services:
+version: "3"
 
+services:
   # Requirements
   nginx:
     container_name: nginx
@@ -15,6 +16,7 @@ services:
       - wp:/var/www/wordpress
       - adminer:/var/www/adminer
       - resume:/var/www/resume
+    restart: unless-stopped
     env_file:
       - .env
     depends_on:
@@ -34,6 +36,7 @@ services:
       - docker-network
     volumes:
       - db:/var/lib/mysql
+    restart: unless-stopped
     env_file:
       - .env
 
@@ -43,11 +46,11 @@ services:
       context: requirements/wordpress
       args:
         PHP_VER: ${PHP_VER}
-        WP_VER: ${WP_VER}
     networks:
       - docker-network
     volumes:
       - wp:/var/www/wordpress
+    restart: unless-stopped
     env_file:
       - .env
     depends_on:
@@ -67,6 +70,7 @@ services:
       - docker-network
     volumes:
       - adminer:/var/www/adminer
+    restart: unless-stopped
     env_file:
       - .env
     depends_on:
@@ -96,6 +100,7 @@ services:
       - docker-network
     volumes:
       - redis:/data
+    restart: unless-stopped
     env_file:
       - .env
 
@@ -110,6 +115,21 @@ services:
       - docker-network
     volumes:
       - wp:/var/www/wordpress
+    restart: unless-stopped
+    env_file:
+      - .env
+
+  uptime-kuma:
+    container_name: uptime-kuma
+    build:
+      context: requirements/bonus/uptime-kuma
+    ports:
+      - "3001:3001" # change port for nginx url maybe? No, do both, same for resume, it makes sense because right now everything relies
+    networks:
+      - docker-network
+    volumes:
+      - kuma:/app/data
+    restart: unless-stopped
     env_file:
       - .env
 
@@ -145,4 +165,10 @@ volumes:
     driver_opts:
       type: none
       device: ${VOL_REDIS}
+      o: bind
+  kuma:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${VOL_KUMA}
       o: bind
