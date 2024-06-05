@@ -30,4 +30,3 @@ COPY tools/config-uptime-kuma.py /
 COPY tools/setup.sh /
 
 ENTRYPOINT ["bash", "/setup.sh"]
-#ENTRYPOINT ["sleep", "infinity"]
