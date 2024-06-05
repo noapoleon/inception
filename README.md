@@ -9,13 +9,13 @@ Bonuses:
 - [x] FTP Server
 - [x] Static Website (Resume)
 - [x] Adminer
-- [ ] Custom Service (Don't know yet)
+- [x] Custom Service (Uptime-kuma)
 
 Issues:
 - [ ] 10 seconds close time for ftp
 - [x] check if uptime-kuma monitor works when nginx killed
-- [ ] Copy .env file somewhere or make a script to detect it has everything
-- [ ] check version obselete warning
+- [x] Copy .env file somewhere or make a script to detect it has everything
+- [x] check version obselete warning
 - [ ] docker bind volumes can't be deleted without root, check if can be fixed
 
 > [!CAUTION]

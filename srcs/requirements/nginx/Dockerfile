@@ -1,5 +1,8 @@
 FROM debian:bullseye
 
+# Port documentation
+EXPOSE 443
+
 # Install dependencies
 RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y nginx openssl ca-certificates
@@ -15,8 +18,5 @@ RUN mkdir -p /etc/nginx/ssl \
 # Install config and replace domain name
 COPY conf/default.conf /etc/nginx/sites-available/default
 COPY tools/setup.sh /setup.sh
-
-# Port documentation
-EXPOSE 443
 
 ENTRYPOINT ["bash", "/setup.sh"]

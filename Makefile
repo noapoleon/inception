@@ -1,3 +1,4 @@
+# include .env file if it exists
 -include ./srcs/.env
 
 NAME	=	inception
