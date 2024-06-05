@@ -4,4 +4,4 @@
 mkdir -p /run/php
 
 # Replace PID 1
-exec /usr/sbin/php-fpm${PHP_VER} -F
+exec /usr/sbin/php-fpm7.4 -F

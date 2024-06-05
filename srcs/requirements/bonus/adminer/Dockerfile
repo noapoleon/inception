@@ -2,11 +2,10 @@ FROM debian:bullseye
 
 # Install dependencies
 RUN apt-get update -y && apt-get upgrade -y
-ARG PHP_VER
 RUN apt-get install -y	wget \
-						php${PHP_VER} \
-						php${PHP_VER}-fpm \
-						php${PHP_VER}-mysql \
+						php7.4 \
+						php7.4-fpm \
+						php7.4-mysql \
 						mariadb-client
 
 # Install adminer file
@@ -15,7 +14,7 @@ RUN mkdir -p /var/www/adminer && \
 	mv adminer-4.8.1.php /var/www/adminer/adminer.php
 
 # Copy configs
-COPY conf/www.conf /etc/php/${PHP_VER}/fpm/pool.d/www.conf
+COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY tools/setup.sh /setup.sh
 
 # Port documentation

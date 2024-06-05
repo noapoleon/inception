@@ -4,7 +4,7 @@
 if ! wp-cli.phar --allow-root --path=/var/www/wordpress core is-installed; then
 
 	# Download main wordpress files
-	wp-cli.phar --allow-root --path=/var/www/wordpress core download --version=${WP_VER}
+	wp-cli.phar --allow-root --path=/var/www/wordpress core download --version=6.5.3
 
 	# Create config file
 	wp-cli.phar --allow-root --path=/var/www/wordpress config create \
@@ -38,4 +38,4 @@ fi
 mkdir -p /run/php
 
 # Replace PID 1
-exec /usr/sbin/php-fpm${PHP_VER} -F
+exec /usr/sbin/php-fpm7.4 -F
