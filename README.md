@@ -14,6 +14,9 @@ Bonuses:
 Issues:
 - [ ] 10 seconds close time for ftp
 - [ ] check if uptime-kuma monitor works when nginx killed
+- [ ] Copy .env file somewhere or make a script to detect it has everything
+- [ ] check version obselete warning
+- [ ] docker bind volumes can't be deleted without root, check if can be fixed
 
 > [!CAUTION]
 > Remove dummy resume and put good one instead before submitting

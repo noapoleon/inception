@@ -1,15 +1,14 @@
 include ./srcs/.env
 
-NAME	=	inception
 CONFIG	=	./srcs/docker-compose.yml
 
 all: up
 
 up: datadir
-	docker compose -p $(NAME) -f $(CONFIG) up --build -d
+	docker compose -f $(CONFIG) up --build -d
 
 down:
-	docker compose -p $(NAME) down
+	docker compose -p ${NAME} down
 
 datadir:
 		mkdir -p	${VOL_DB} \
@@ -19,6 +18,10 @@ datadir:
 					${VOL_REDIS} \
 					${VOL_KUMA}
 
+clean: down
+
+fclean: clean
+
 re: down all
 
-.PHONY: all up down re datadir
+.PHONY: all up down clean fclean re datadir
