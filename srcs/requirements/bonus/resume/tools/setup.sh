@@ -9,4 +9,7 @@ else
 	printf "Did not copy resume files, already present\n"
 fi
 
-exit 0
+sed -i '/\s*types\s*{/a\    font/ttf ttf\;' /etc/nginx/mime.types
+
+# Start nginx server
+exec nginx -g "daemon off;"

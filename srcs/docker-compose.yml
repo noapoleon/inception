@@ -11,13 +11,13 @@ services:
     volumes:
       - wp:/var/www/wordpress
       - adminer:/var/www/adminer
-      - resume:/var/www/resume
     restart: unless-stopped
     env_file:
       - .env
     depends_on:
       - wordpress
       - adminer
+      - resume
 
   mariadb:
     container_name: mariadb 
