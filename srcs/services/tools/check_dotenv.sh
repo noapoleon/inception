@@ -31,6 +31,7 @@ if [ -z $1 ]; then
 	exit 1
 fi
 
+# such a crap way to check variables...
 if [ -s $1 ]; then
 	printf "Checking required .env variables...\n"
 	export $(grep -v "^\s*#" $1 | xargs )
@@ -45,6 +46,9 @@ if [ -s $1 ]; then
 	fi
 	printf "\e[32mAll required variables present!\e[0m\n"
 else
-	printf "\e[31mError:\e[0m env file empty\n"
+	printf "\e[31mError:\e[0m env file doesn't exist or is empty\n"
+	for var in "${required_vars[@]}"; do
+		printf "\e[31mError:\e[0m $var is not set\n"
+	done
 	exit 1
 fi

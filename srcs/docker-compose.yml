@@ -3,7 +3,7 @@ services:
   # Requirements
   nginx:
     container_name: nginx
-    build: requirements/nginx
+    build: services/nginx
     ports:
       - "443:443"
     networks:
@@ -21,7 +21,7 @@ services:
 
   mariadb:
     container_name: mariadb 
-    build: requirements/mariadb
+    build: services/mariadb
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "--user=${DB_USER}", "--password=${DB_PASS}"]
       interval: 3s
@@ -38,7 +38,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    build: requirements/wordpress
+    build: services/wordpress
     networks:
       - docker-network
     volumes:
@@ -55,7 +55,7 @@ services:
   # Bonuses
   adminer:
     container_name: adminer
-    build: requirements/bonus/adminer
+    build: services/bonus/adminer
     networks:
       - docker-network
     volumes:
@@ -69,7 +69,7 @@ services:
 
   resume:
     container_name: resume
-    build: requirements/bonus/resume
+    build: services/bonus/resume
     networks:
       - docker-network
     volumes:
@@ -77,7 +77,7 @@ services:
 
   redis:
     container_name: redis
-    build: requirements/bonus/redis
+    build: services/bonus/redis
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 3s
@@ -94,7 +94,7 @@ services:
 
   ftp:
     container_name: ftp
-    build: requirements/bonus/ftp
+    build: services/bonus/ftp
     ports:
       - "21100-21110:21100-21110"
       - "21:21"
@@ -108,9 +108,9 @@ services:
 
   uptime-kuma:
     container_name: uptime-kuma
-    build: requirements/bonus/uptime-kuma
+    build: services/bonus/uptime-kuma
     ports:
-      - "3001:3001" # change port for nginx url maybe? No, do both, same for resume, it makes sense because right now everything relies
+      - "3001:3001"
     networks:
       - docker-network
     volumes:
@@ -118,6 +118,18 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+
+  # Monitoring
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    networks:
+      - docker-network
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./services/prometheus/conf/prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: unless-stopped
 
 networks:
   docker-network:

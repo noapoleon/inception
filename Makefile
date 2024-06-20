@@ -21,7 +21,7 @@ datadir:
 					${VOL_KUMA}
 
 check_env:
-	srcs/requirements/tools/check_dotenv.sh srcs/.env
+	srcs/services/tools/check_dotenv.sh srcs/.env
 
 clean: down
 
