@@ -17,6 +17,7 @@ required_vars=(
 	"UK_PASS"
 	"UK_SITE_NAME"
 	"UK_SITE_URL"
+	"VOL_HOME"
 	"VOL_DB"
 	"VOL_WP"
 	"VOL_ADMINER"
