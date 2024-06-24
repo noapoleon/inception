@@ -128,8 +128,33 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./services/prometheus/conf/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./services/prometheus/conf/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus:/prometheus
     restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    networks:
+      - docker-network
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana:/var/lib/grafana
+    restart: unless-stopped
+
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter
+    networks:
+      - docker-network
+    command:
+      - '--path.rootfs=/host'
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - /:/host:ro,rslave
+
 
 networks:
   docker-network:
@@ -169,4 +194,16 @@ volumes:
     driver_opts:
       type: none
       device: ${VOL_KUMA}
+      o: bind
+  prometheus:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${VOL_PROMETHEUS}
+      o: bind
+  grafana:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${VOL_GRAFANA}
       o: bind

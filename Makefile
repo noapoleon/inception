@@ -18,14 +18,17 @@ datadir:
 					${VOL_ADMINER} \
 					${VOL_RESUME} \
 					${VOL_REDIS} \
-					${VOL_KUMA}
+					${VOL_KUMA} \
+					${VOL_PROMETHEUS} \
 
 check_env:
 	srcs/services/tools/check_dotenv.sh srcs/.env
 
 clean: down
+	docker compose -p ${NAME} down -v
 
 fclean: clean
+	docker compose 
 
 re: down all
 
